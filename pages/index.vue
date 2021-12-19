@@ -1,0 +1,169 @@
+<template>
+  <div>
+    <div class="flex flex-col justify-center items-center w-100">
+      <div class="mb-4">
+        Hi, ich bin <span class="text-violet">Selina.</span>
+      </div>
+      <h1
+        class="text-4xl lg:text-6xl headline text-center lg:w-3/6 leading-tight mb-4"
+      >
+        Gestaltung und Entwicklung digitaler Produkte und Erlebnisse
+      </h1>
+      <p class="mb-8">Frontend Developer & Web Designer</p>
+      <nuxt-link class="button" :to="'/'"> Mehr über mich </nuxt-link>
+    </div>
+    <aside class="px-5 pt-6 pb-5 lg:px-0 md:w-2/12 md:mr-5">
+      <div class="relative rounded-md mb-7 md:mr-7 search-container">
+        <input
+          id="search-bar"
+          v-model="search"
+          type="text"
+          class="py-3 my-1 rounded-md md:px-3"
+          placeholder="Search title.."
+          @change="filteredList()"
+        />
+        <img
+          class="absolute w-6 h-6 lg:w-4 lg:h-4 transition duration-200 ease-in-out right-2.5 lg:right-3 top-3.5"
+          src="../static/icons/search.svg"
+        />
+      </div>
+
+      <!-- <div class="flex overflow-x-scroll md:block gap-x-2">
+        <div
+          v-for="cat in categories"
+          :key="cat"
+          class="flex items-center px-3 py-2 mb-3 border-gray-400 rounded-md md:block mobile-categories md:p-0 md:border-0 md:border-none"
+          :class="{ 'selected-category lg:bg-none': isCatSelected(cat) }"
+          @click="filter(cat)"
+        >
+          <div class="lg:flex">
+            <input :id="cat" class="hidden" type="radio" name="cats" />
+            <div
+              class="hidden lg:block lg:h-full lg:mr-2 lg:rounded-sm filter-checkbox"
+            >
+              <img
+                class="w-5 h-5 p-0.5"
+                :class="{
+                  'opacity-100': isCatSelected(cat),
+                  'opacity-0': !isCatSelected(cat),
+                }"
+                src="../static/icons/tick.svg"
+              />
+            </div>
+            <label :for="cat">{{ cat }}</label>
+          </div>
+        </div>
+      </div> -->
+    </aside>
+    <section
+      id="posts"
+      class="container grid gap-x-8 gap-y-8 lg:gap-y-20 px-5 lg:px-40 pt-2 mx-auto mb-8 md:grid-cols-2 w-100"
+    >
+      <PostPreview
+        v-for="post in filteredList()"
+        :id="post.id"
+        :key="post.id"
+        :title="post.title"
+        :excerpt="post.previewText"
+        :thumbnailImage="post.thumbnailUrl"
+        :categories="post.categories"
+        :selectedCategory="selectedCat"
+        :difficulty="post.difficulty"
+        :minutes="post.minutes"
+        :ingredients="post.ingredients"
+        :bgColor="post.bgColor"
+      />
+    </section>
+  </div>
+</template>
+
+<script lang="ts">
+import PostPreview from '../components/Blog/PostPreview.vue'
+
+export default {
+  name: 'HomePage',
+
+  components: {
+    PostPreview,
+  },
+
+  // eslint-disable-next-line camelcase
+  asyncData(context) {
+    // fetch data from projects folder in storyblok
+    return context.app.$storyapi
+      .get('cdn/stories', {
+        version: context.isDev ? 'draft' : 'published',
+        starts_with: 'blog/',
+      })
+      .then((res: { data: { stories: any[] } }) => {
+        console.log(res)
+        return {
+          posts: res.data.stories.map(
+            (post: {
+              slug: any
+              content: {
+                title: any
+                description: any
+                thumbnail: { filename: any }
+                categories: any
+                difficulty: any
+                minutes: any
+                ingredients: any
+                bgColor: any
+              }
+            }) => {
+              return {
+                id: post.slug,
+                title: post.content.title,
+                previewText: post.content.description,
+                thumbnailUrl: post.content.thumbnail.filename,
+                categories: post.content.categories,
+                difficulty: post.content.difficulty,
+                minutes: post.content.minutes,
+                ingredients: post.content.ingredients,
+                bgColor: post.content.bgColor,
+              }
+            }
+          ),
+        }
+      })
+  },
+  data() {
+    return {
+      isVisible: false,
+      selectedCat: '',
+      search: '',
+      categories: [
+        'Alle',
+        'Brot',
+        'Chinesisch',
+        'Hühnerfleisch',
+        'Italienisch',
+        'Kartoffeln',
+        'Meeresfrüchte',
+        'Österreichisch',
+        'Rindfleisch',
+        'Salat',
+        'Schweinefleisch',
+        'Süßes',
+        'Vegetarisch',
+      ],
+    }
+  },
+
+  methods: {
+    filter(selectedCat: any): void {
+      this.selectedCat = selectedCat
+    },
+    filteredList(): any {
+      return this.posts.filter((post: { title: string }) => {
+        return post.title.toLowerCase().includes(this.search.toLowerCase())
+      })
+    },
+
+    isCatSelected(cat): boolean {
+      return cat === this.selectedCat
+    },
+  },
+}
+</script>
