@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex flex-col justify-center items-center w-100">
+    <div class="flex blue flex-col justify-center items-center w-100">
       <div class="mb-4">
         Hi, ich bin <span class="text-violet">Selina.</span>
       </div>
