@@ -1,7 +1,13 @@
 <template>
-  <section id="about-page">
-    <h1>{{ title }}</h1>
-    <p>{{ content }}</p>
+  <section id="about-page" class="lg:px-40">
+    <div class="flex gap-x-40">
+      <div>
+        <h1 class="headline lg:text-5xl mb-8">{{ title }}</h1>
+        <p>{{ content }}</p>
+      </div>
+
+      <img class="h-72 w-72" src="../../static/me.jpg" alt="" />
+    </div>
   </section>
 </template>
 

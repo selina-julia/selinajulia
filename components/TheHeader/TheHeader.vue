@@ -61,12 +61,12 @@
 
       <!-- desktop nav -->
       <nav class="hidden main-nav md:block">
-        <ul class="nav-links">
+        <ul class="nav-links flex gap-x-4">
           <nuxt-link to="/" tag="li" class="nav-link"><a>Home</a></nuxt-link>
           <nuxt-link to="/about" tag="li" class="nav-link"
             ><a>Über mich</a></nuxt-link
           >
-          <nuxt-link to="/favorites" tag="li" class="nav-link"
+          <nuxt-link to="/projects" tag="li" class="nav-link"
             ><a>Projekte</a></nuxt-link
           >
         </ul>

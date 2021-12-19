@@ -29,6 +29,7 @@ body {
   font-family: Inter, sans-serif;
   overflow-x: hidden;
   font-size: 18px;
+  color: #212529;
 }
 
 .headline {

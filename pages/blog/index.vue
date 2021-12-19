@@ -39,6 +39,7 @@
         :title="post.title"
         :excerpt="post.previewText"
         :thumbnailImage="post.thumbnailUrl"
+        :detailImage="post.detailImage"
         :categories="post.categories"
         :selectedCategory="selectedCat"
         :difficulty="post.difficulty"

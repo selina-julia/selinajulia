@@ -63,6 +63,10 @@ export default Vue.extend({
       type: String,
       required: true,
     },
+    detailImage: {
+      type: String,
+      required: true,
+    },
   },
 
   data() {

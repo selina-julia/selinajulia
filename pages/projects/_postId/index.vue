@@ -1,15 +1,5 @@
 <template>
   <div>
-    <div class="flex flex-col justify-center items-center w-100">
-      <div class="mb-4">
-        Hi, ich bin <span class="text-violet">Selina.</span>
-      </div>
-      <h1 class="text-4xl lg:text-6xl headline text-center lg:w-3/6 mb-4">
-        Gestaltung und Entwicklung digitaler Produkte und Erlebnisse
-      </h1>
-      <p class="mb-8">Frontend Developer & Web Designer</p>
-      <nuxt-link class="button" :to="'/'"> Mehr über mich </nuxt-link>
-    </div>
     <aside class="px-5 pt-6 pb-5 lg:px-0 md:w-2/12 md:mr-5">
       <div class="relative rounded-md mb-7 md:mr-7 search-container">
         <input
@@ -22,7 +12,7 @@
         />
         <img
           class="absolute w-6 h-6 lg:w-4 lg:h-4 transition duration-200 ease-in-out right-2.5 lg:right-3 top-3.5"
-          src="../static/icons/search.svg"
+          src="../../../static/icons/search.svg"
         />
       </div>
 
@@ -77,7 +67,7 @@
 </template>
 
 <script lang="ts">
-import PostPreview from '../components/Blog/PostPreview.vue'
+import PostPreview from '../../../components/Blog/PostPreview.vue'
 
 export default {
   name: 'HomePage',
@@ -157,10 +147,9 @@ export default {
       this.selectedCat = selectedCat
     },
     filteredList(): any {
-      // const sortedActivities = this.posts.sort((a, b) => b.date - a.date)
-      // console.log(sortedActivities)
-      // return sortedActivities
-      return this.posts.slice(0, 4)
+      return this.posts.filter((post: { title: string }) => {
+        return post.title.toLowerCase().includes(this.search.toLowerCase())
+      })
     },
 
     isCatSelected(cat): boolean {
