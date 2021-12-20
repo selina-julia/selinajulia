@@ -1,5 +1,5 @@
 <template>
-  <section id="about-page" class="lg:px-40">
+  <section id="about-page" class="lg:px-52">
     <div class="flex gap-x-40">
       <div>
         <h1 class="headline lg:text-5xl mb-8">{{ title }}</h1>

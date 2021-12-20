@@ -141,7 +141,7 @@ export default Vue.extend({
 
   @media (min-width: 768px) {
     height: 550px;
-    width: 550px;
+    width: 100%;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div id="post" class="lg:px-40">
+  <div id="post" class="lg:px-52">
     <section class="container px-4 pt-8 pb-20 mx-auto post-content">
       <div class="flex items-center mb-4">
         <object data="../../../static/icons/back.svg" type="image/svg+xml">

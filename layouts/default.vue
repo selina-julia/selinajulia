@@ -2,7 +2,7 @@
   <div class="">
     <TheHeader />
 
-    <main class="w-screen overflow-x-hidden main-content md:px-16">
+    <main class="w-screen main-content md:px-16">
       <nuxt />
     </main>
   </div>
@@ -53,7 +53,7 @@ body {
   background: #4236ff;
   color: #fff;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 12px 25px;
 }
 
 .main-content {

@@ -53,26 +53,30 @@
         </div>
       </div> -->
     </aside>
-    <section
-      id="posts"
-      class="container grid gap-x-8 gap-y-8 lg:gap-y-20 px-5 lg:px-40 pt-2 mx-auto mb-8 md:grid-cols-2 w-100"
-    >
-      <PostPreview
-        v-for="post in filteredList()"
-        :id="post.id"
-        :key="post.id"
-        :title="post.title"
-        :excerpt="post.previewText"
-        :thumbnailImage="post.thumbnailUrl"
-        :categories="post.categories"
-        :selectedCategory="selectedCat"
-        :difficulty="post.difficulty"
-        :minutes="post.minutes"
-        :ingredients="post.ingredients"
-        :bgColor="post.bgColor"
-        :detailImage="post.detailImage"
-      />
-    </section>
+    <div class="lg:px-52 mb-10">
+      <section
+        id="posts"
+        class="grid gap-x-8 gap-y-8 lg:gap-y-20 pt-2 mx-auto mb-8 md:grid-cols-2 w-100"
+      >
+        <PostPreview
+          v-for="post in filteredList()"
+          :id="post.id"
+          :key="post.id"
+          :title="post.title"
+          :excerpt="post.previewText"
+          :thumbnailImage="post.thumbnailUrl"
+          :categories="post.categories"
+          :selectedCategory="selectedCat"
+          :difficulty="post.difficulty"
+          :minutes="post.minutes"
+          :ingredients="post.ingredients"
+          :bgColor="post.bgColor"
+          :detailImage="post.detailImage"
+        />
+      </section>
+      <nuxt-link to="/projects" class="button">Alle Projekte ansehen</nuxt-link>
+    </div>
+    <MailBanner />
   </div>
 </template>
 
