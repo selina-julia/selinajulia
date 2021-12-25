@@ -4,7 +4,9 @@
       <div class="mb-4">
         Hi, ich bin <span class="text-violet">Selina.</span>
       </div>
-      <h1 class="text-4xl lg:text-6xl headline text-center lg:w-3/6 mb-4">
+      <h1
+        class="text-4xl lg:text-6xl headline text-center lg:w-3/6 mb-4 lg:leading-tight"
+      >
         Gestaltung und Entwicklung digitaler Produkte und Erlebnisse
       </h1>
       <p class="mb-8">Frontend Developer & Web Designer</p>
@@ -53,7 +55,7 @@
         </div>
       </div> -->
     </aside>
-    <div class="lg:px-52 mb-10">
+    <div class="xl:px-52 mb-10">
       <section
         id="posts"
         class="grid gap-x-8 gap-y-8 lg:gap-y-20 pt-2 mx-auto mb-8 md:grid-cols-2 w-100"

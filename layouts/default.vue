@@ -41,6 +41,11 @@ body {
   font-size: 14px;
 }
 
+.subtitle {
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
 .text-violet {
   color: #4236ff;
 }

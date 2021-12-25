@@ -45,7 +45,7 @@
     </aside>
     <section
       id="posts"
-      class="container grid gap-x-8 gap-y-8 lg:gap-y-20 px-5 lg:px-52 pt-2 mx-auto mb-8 md:grid-cols-2 w-100"
+      class="container grid gap-x-8 gap-y-8 lg:gap-y-20 px-5 xl:px-52 pt-2 mx-auto mb-8 md:grid-cols-2 w-100"
     >
       <PostPreview
         v-for="post in filteredList()"
