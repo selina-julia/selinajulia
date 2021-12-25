@@ -10,7 +10,7 @@
         Gestaltung und Entwicklung digitaler Produkte und Erlebnisse
       </h1>
       <p class="mb-8">Frontend Developer & Web Designer</p>
-      <nuxt-link class="button" :to="'/'"> Mehr über mich </nuxt-link>
+      <nuxt-link class="button" :to="'/about'"> Mehr über mich </nuxt-link>
     </div>
     <aside class="px-5 pt-6 pb-5 lg:px-0 md:w-2/12 md:mr-5">
       <div class="relative rounded-md mb-7 md:mr-7 search-container">
@@ -55,10 +55,10 @@
         </div>
       </div> -->
     </aside>
-    <div class="xl:px-52 mb-10">
+    <div class="projects_overview xl:px-52 mb-40">
       <section
         id="posts"
-        class="grid gap-x-8 gap-y-8 lg:gap-y-20 pt-2 mx-auto mb-8 md:grid-cols-2 w-100"
+        class="grid gap-x-8 gap-y-8 lg:gap-y-32 pt-2 mx-auto mb-8 md:grid-cols-2 w-100"
       >
         <PostPreview
           v-for="post in filteredList()"

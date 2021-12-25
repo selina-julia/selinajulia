@@ -5,17 +5,20 @@
     <main class="w-screen main-content md:px-16">
       <nuxt />
     </main>
+    <TheFooter />
   </div>
 </template>
 
 <script>
 import TheHeader from '@/components/TheHeader/TheHeader.vue'
+import TheFooter from '@/components/TheFooter/TheFooter.vue'
 
 export default {
   name: 'LayoutPage',
 
   components: {
     TheHeader,
+    TheFooter,
   },
 }
 </script>
