@@ -1,8 +1,8 @@
 <template>
-  <div class="">
+  <div class="overflow-x-hidden">
     <TheHeader />
 
-    <main class="w-screen main-content md:px-16">
+    <main class="w-screen main-content px-5 md:px-16">
       <nuxt />
     </main>
     <TheFooter />

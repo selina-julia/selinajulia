@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="flex flex-col justify-center items-center w-100">
+  <div class="pt-10">
+    <div class="flex flex-col justify-center items-center w-100 mb-20">
       <div class="mb-4">
         Hi, ich bin <span class="text-violet">Selina.</span>
       </div>
@@ -13,7 +13,7 @@
       <nuxt-link class="button" :to="'/about'"> Mehr über mich </nuxt-link>
     </div>
     <aside class="px-5 pt-6 pb-5 lg:px-0 md:w-2/12 md:mr-5">
-      <div class="relative rounded-md mb-7 md:mr-7 search-container">
+      <!-- <div class="relative rounded-md mb-7 md:mr-7 search-container">
         <input
           id="search-bar"
           v-model="search"
@@ -26,7 +26,7 @@
           class="absolute w-6 h-6 lg:w-4 lg:h-4 transition duration-200 ease-in-out right-2.5 lg:right-3 top-3.5"
           src="../static/icons/search.svg"
         />
-      </div>
+      </div> -->
 
       <!-- <div class="flex overflow-x-scroll md:block gap-x-2">
         <div

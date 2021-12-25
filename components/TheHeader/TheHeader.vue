@@ -1,5 +1,5 @@
 <template>
-  <header class="z-10 py-2 main-header backdrop-filter backdrop-blur-lg">
+  <header class="z-10 py-3 main-header backdrop-filter backdrop-blur-lg">
     <div
       class="flex items-center justify-between w-screen px-5 md:w-auto md:px-16"
     >
@@ -93,3 +93,17 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: hsl(0deg 0% 100% / 85%);
+}
+
+.nav-link.nuxt-link-exact-active {
+  border-bottom: 2px solid;
+}
+</style>

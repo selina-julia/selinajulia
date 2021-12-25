@@ -1,5 +1,20 @@
 <template>
   <div>
+    <div class="flex gap-x-40 mb-40 xl:px-52 lg:w-8/12">
+      <div>
+        <h1 class="headline lg:text-5xl mb-8">Meine Projekte</h1>
+        <div class="pl-16">
+          <p>
+            Während meines Studiums an der FH Hagenberg durfte ich bereits
+            einige Projekte im Bereich Design und Entwicklung umsetzen. Darüber
+            hinaus habe ich auch bereits an ein paar Projekten im privaten
+            Bereich mitgewirkt. Ich stelle mich gerne neuen Herausforderungen
+            und lerne Neues kennen, besonders in Sachen Frameworks und
+            Design-Trends.
+          </p>
+        </div>
+      </div>
+    </div>
     <aside class="px-5 pt-6 pb-5 lg:px-0 md:w-2/12 md:mr-5">
       <div class="relative rounded-md mb-7 md:mr-7 search-container">
         <input
