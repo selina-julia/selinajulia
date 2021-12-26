@@ -70,6 +70,7 @@
         :excerpt="post.previewText"
         :thumbnailImage="post.thumbnailUrl"
         :categories="post.categories"
+        :overviewCategories="post.overviewCategories"
         :selectedCategory="selectedCat"
         :difficulty="post.difficulty"
         :minutes="post.minutes"
@@ -111,6 +112,7 @@ export default {
                 description: any
                 thumbnail: { filename: any }
                 categories: any
+                overview_categories: any
                 difficulty: any
                 minutes: any
                 ingredients: any
@@ -124,6 +126,7 @@ export default {
                 previewText: post.content.description,
                 thumbnailUrl: post.content.thumbnail.filename,
                 categories: post.content.categories,
+                overviewCategories: post.content.overview_categories,
                 difficulty: post.content.difficulty,
                 minutes: post.content.minutes,
                 ingredients: post.content.ingredients,

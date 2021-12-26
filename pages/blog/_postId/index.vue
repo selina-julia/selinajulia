@@ -1,5 +1,5 @@
 <template>
-  <div id="post" class="xl:px-52">
+  <div id="post" class="xl:px-52 mb-32">
     <section class="container px-4 pt-8 pb-20 mx-auto post-content">
       <div class="flex items-center mb-4">
         <object data="../../../static/icons/back.svg" type="image/svg+xml">
@@ -14,9 +14,27 @@
       <h1 class="headline mb-5 text-3xl font-bold xl:w-7/12 lg:text-7xl">
         {{ title }}
       </h1>
-      <span class="px-2 py-1 mr-3 rounded-sm detail-category">{{
-        categories
-      }}</span>
+
+      <div class="flex items-center gap-x-7">
+        <div class="flex gap-x-3">
+          <div
+            v-for="cat in categories"
+            :key="cat"
+            class="px-2 py-1 rounded-sm border"
+          >
+            {{ cat }}
+          </div>
+        </div>
+        <a v-if="link" :href="link" target="_blank">
+          <object data="../../../static/icons/link.svg" type="image/svg+xml">
+            <img
+              class="w-5 h-5 mr-2 transition duration-200 ease-in-out"
+              src="../../../static/icons/link.svg"
+            />
+          </object>
+        </a>
+      </div>
+
       <p class="mt-5 lg:w-4/6">{{ content }}</p>
     </section>
 
@@ -45,6 +63,7 @@ export default {
           categories: res.data.story.content.categories,
           ingredients: res.data.story.content.ingredients,
           detailImage: res.data.story.content.detailImage,
+          link: res.data.story.content.link,
         }
       })
   },

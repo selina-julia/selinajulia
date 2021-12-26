@@ -9,7 +9,7 @@
       </div>
 
       <div class="flex flex-col justify-between post-preview-content">
-        <div class="sub-headline">{{ categories }}</div>
+        <div class="sub-headline">{{ overviewCategories }}</div>
         <h1 class="headline pr-5 mb-2 text-2xl font-bold line-clamp-2">
           {{ title }}
         </h1>
@@ -40,6 +40,10 @@ export default Vue.extend({
       required: true,
     },
     categories: {
+      type: String,
+      required: true,
+    },
+    overviewCategories: {
       type: String,
       required: true,
     },
@@ -108,6 +112,8 @@ export default Vue.extend({
           return 'bg-blue-50'
         case 'violet':
           return 'bg-indigo-50'
+        case 'orange':
+          return 'bg-orange-50'
         case 'green':
           return 'bg-green-50'
         case 'yellow':
