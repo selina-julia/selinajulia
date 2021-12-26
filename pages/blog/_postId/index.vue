@@ -1,6 +1,6 @@
 <template>
   <div id="post" class="xl:px-52 mb-32">
-    <section class="container px-4 pt-8 pb-20 mx-auto post-content">
+    <section class="container lg:px-4 pt-16 lg:pt-8 pb-20 mx-auto post-content">
       <div class="flex items-center mb-4">
         <object data="../../../static/icons/back.svg" type="image/svg+xml">
           <img
@@ -8,7 +8,7 @@
             src="../../../static/icons/back.svg"
           />
         </object>
-        <nuxt-link to="/">Zurück</nuxt-link>
+        <nuxt-link to="/projects">Zurück</nuxt-link>
       </div>
 
       <h1 class="headline mb-5 text-3xl font-bold xl:w-7/12 lg:text-7xl">
