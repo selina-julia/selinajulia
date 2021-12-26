@@ -85,7 +85,7 @@ export default {
     routes() {
       return axios
         .get(
-          'https://api.storyblok.com/v1/cdn/stories?version=published&token=CNcDIsYZIc8wra17Qv4lVAtt&starts_with=blog&cv=' +
+          'https://api.storyblok.com/v1/cdn/stories?version=published&token=P0fRQZ2ZO5pVkdaMLRxCzAtt&starts_with=blog&cv=' +
             Math.floor(Date.now() / 1e3)
         )
         .then((res) => {
