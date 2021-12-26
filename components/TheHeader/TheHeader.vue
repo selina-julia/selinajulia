@@ -4,7 +4,7 @@
       class="flex items-center justify-between w-screen px-5 md:w-auto md:px-16"
     >
       <nuxt-link to="/">
-        <div class="text-2xl headline">
+        <div class="text-xl lg:text-2xl headline">
           selina<span class="title">julia</span>
         </div>
       </nuxt-link>
@@ -39,7 +39,7 @@
                 >Über mich</a
               ></nuxt-link
             >
-            <nuxt-link to="/favorites" tag="li" class="nav-link mobile"
+            <nuxt-link to="/projects" tag="li" class="nav-link mobile"
               ><a class="text-4xl" @click="closeMobileNav()"
                 >Projekte</a
               ></nuxt-link

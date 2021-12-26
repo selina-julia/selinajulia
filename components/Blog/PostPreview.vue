@@ -1,11 +1,18 @@
 <template>
-  <article v-if="filter()" class="relative flex flex-col items-center">
+  <article
+    v-if="filter()"
+    class="relative flex flex-col items-center ease-in-out duration-300"
+  >
     <nuxt-link :to="'/blog/' + id">
       <div
         class="project-preview flex justify-center items-center mb-2"
         :class="getBgColor()"
       >
-        <img class="mb-3 h-auto w-full p-14" :src="thumbnailImage" alt="" />
+        <img
+          class="mb-3 h-auto w-full p-14 project-image"
+          :src="thumbnailImage"
+          alt=""
+        />
       </div>
 
       <div class="flex flex-col justify-between post-preview-content">
@@ -40,7 +47,7 @@ export default Vue.extend({
       required: true,
     },
     categories: {
-      type: String,
+      type: String[{}],
       required: true,
     },
     overviewCategories: {
@@ -68,7 +75,7 @@ export default Vue.extend({
       required: true,
     },
     detailImage: {
-      type: String,
+      type: Object,
       required: true,
     },
   },
@@ -145,9 +152,22 @@ export default Vue.extend({
   width: 100%;
   height: 300px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1000px) {
+    height: 400px;
+    width: 100%;
+  }
+
+  @media (min-width: 1200px) {
     height: 550px;
     width: 100%;
   }
+}
+
+.project-image {
+  transition: 300ms ease-in-out;
+}
+
+.project-image:hover {
+  transform: scale(0.9);
 }
 </style>
