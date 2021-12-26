@@ -133,12 +133,15 @@ export default {
       this.selectedCat = selectedCat
     },
     filteredList(): any {
-      const sortedProjects = this.posts.sort((a, b) => {
-        return (
-          new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf()
-        )
-      })
-      return sortedProjects.slice(0, 4)
+      // const sortedProjects = this.posts.sort((a, b) => {
+      //   return (
+      //     new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf()
+      //   )
+      // })
+      // return sortedProjects.slice(0, 4)
+      return this.posts.filter((post: { title: string }) =>
+        post.title.toLowerCase().includes(this.search.toLowerCase())
+      )
     },
     isCatSelected(cat): boolean {
       return cat === this.selectedCat
