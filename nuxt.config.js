@@ -4,9 +4,8 @@ const axios = require('axios')
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-  ssr: false,
+  ssr: true,
   buildDir: 'dist',
-  mode: 'universal',
 
   theme: {
     extend: {
