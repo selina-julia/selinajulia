@@ -5,7 +5,7 @@
         class="project-preview flex justify-center items-center mb-2"
         :class="getBgColor()"
       >
-        <img class="mb-3 h-auto w-full p-12" :src="thumbnailImage" alt="" />
+        <img class="mb-3 h-auto w-full p-14" :src="thumbnailImage" alt="" />
       </div>
 
       <div class="flex flex-col justify-between post-preview-content">

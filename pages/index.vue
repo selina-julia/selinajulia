@@ -76,7 +76,9 @@
           :detailImage="post.detailImage"
         />
       </section>
-      <nuxt-link to="/projects" class="button">Alle Projekte ansehen</nuxt-link>
+      <nuxt-link class="button inline-block" to="/projects"
+        >Alle Projekte ansehen</nuxt-link
+      >
     </div>
     <MailBanner />
   </div>
@@ -106,6 +108,7 @@ export default {
           posts: res.data.stories.map(
             (post: {
               slug: any
+              published_at: any
               content: {
                 title: any
                 description: any
@@ -129,6 +132,7 @@ export default {
                 ingredients: post.content.ingredients,
                 bgColor: post.content.bgColor,
                 detailImage: post.content.detailImage,
+                publishDate: post.published_at,
               }
             }
           ),
@@ -163,13 +167,13 @@ export default {
       this.selectedCat = selectedCat
     },
     filteredList(): any {
-      // const sortedActivities = this.posts.sort((a, b) => b.date - a.date)
-      // console.log(sortedActivities)
-      // return sortedActivities
-      console.log(this.posts)
-      return this.posts.slice(0, 4)
+      const sortedProjects = this.posts.sort((a, b) => {
+        return (
+          new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf()
+        )
+      })
+      return sortedProjects.slice(0, 4)
     },
-
     isCatSelected(cat): boolean {
       return cat === this.selectedCat
     },

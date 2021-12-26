@@ -62,6 +62,12 @@ body {
   color: #fff;
   border-radius: 5px;
   padding: 12px 25px;
+  transition: 300ms ease-in-out;
+}
+
+.button:hover {
+  transform: scale(0.9);
+  opacity: 0.7;
 }
 
 .main-content {

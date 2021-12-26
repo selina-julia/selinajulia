@@ -105,6 +105,7 @@ export default {
           posts: res.data.stories.map(
             (post: {
               slug: any
+              published_at: any
               content: {
                 title: any
                 description: any
@@ -128,6 +129,7 @@ export default {
                 ingredients: post.content.ingredients,
                 bgColor: post.content.bgColor,
                 detailImage: post.content.detailImage,
+                publishDate: post.published_at,
               }
             }
           ),
@@ -161,9 +163,17 @@ export default {
     filter(selectedCat: any): void {
       this.selectedCat = selectedCat
     },
+    // filteredList(): any {
+    //   return this.posts.filter((post: { title: string }) => {
+    //     return post.title.toLowerCase().includes(this.search.toLowerCase())
+    //   })
+    // },
+
     filteredList(): any {
-      return this.posts.filter((post: { title: string }) => {
-        return post.title.toLowerCase().includes(this.search.toLowerCase())
+      return this.posts.sort((a, b) => {
+        return (
+          new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf()
+        )
       })
     },
 
