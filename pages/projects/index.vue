@@ -102,7 +102,6 @@ export default {
 
   // eslint-disable-next-line camelcase
   asyncData(context) {
-    // fetch data from projects folder in storyblok
     return context.app.$storyapi
       .get('cdn/stories', {
         version: context.isDev ? 'draft' : 'published',
