@@ -166,6 +166,7 @@ export default {
       // const sortedActivities = this.posts.sort((a, b) => b.date - a.date)
       // console.log(sortedActivities)
       // return sortedActivities
+      console.log(this.posts)
       return this.posts.slice(0, 4)
     },
 
