@@ -80,7 +80,6 @@ export default {
         version: context.isDev ? 'draft' : 'published',
       })
       .then((res) => {
-        console.log(res)
         return {
           title: res.data.story.content.title,
           content: res.data.story.content.content,

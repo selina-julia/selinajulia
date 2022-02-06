@@ -106,12 +106,10 @@ export default Vue.extend({
   methods: {
     getFavorites() {
       const fav = localStorage.getItem('favorites')
-      console.log(fav)
       return fav
     },
 
     getBgColor() {
-      console.log(this.bgColor)
       switch (this.bgColor) {
         case 'grayblue':
           return 'bg-gray-100'
