@@ -1,9 +1,14 @@
 <template>
   <div class="pt-10">
+    <img
+      class="hidden lg:block absolute right-0 top-20"
+      src="../static/pattern.svg"
+      alt=""
+    />
     <div
-      class="flex flex-col justify-center items-center w-100 mb-10 lg:mb-20 mt-10"
+      class="flex flex-col justify-center items-center w-100 mb-10 lg:mb-32 mt-10"
     >
-      <div class="mb-4">
+      <div class="mb-4 text-2xl">
         Hi, ich bin <span class="text-violet">Selina.</span>
       </div>
       <h1
@@ -11,7 +16,7 @@
       >
         Gestaltung und Entwicklung digitaler Produkte und Erlebnisse
       </h1>
-      <p class="mb-8">Frontend Developer & Web Designer</p>
+      <p class="mb-8 text-2xl">Web Developer & Designer</p>
       <nuxt-link class="button" :to="'/about'"> Mehr über mich </nuxt-link>
     </div>
     <aside class="px-5 pt-6 pb-5 lg:px-0 md:w-2/12 md:mr-5"></aside>

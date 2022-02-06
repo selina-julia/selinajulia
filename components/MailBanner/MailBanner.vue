@@ -1,7 +1,13 @@
 <template>
   <div
-    class="xl:px-52 bg-indigo-50 flex py-12 lg:py-24 items-center flex-col mail-banner"
+    class="xl:px-52 bg-indigo-50 flex py-12 lg:py-24 items-center flex-col mail-banner relative"
   >
+    <img
+      class="hidden lg:block absolute -left-12 -scale-x-100 top-0 bottom-0 h-full"
+      src="../../static/pattern.svg"
+      alt=""
+    />
+
     <p class="mb-3 text-violet subtitle">Noch Fragen?</p>
     <h2 class="mb-4 headline text-2xl lg:text-3xl text-center">
       Schreib mir eine Nachricht
