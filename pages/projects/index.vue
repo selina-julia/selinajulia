@@ -70,6 +70,12 @@
       id="posts"
       class="grid gap-x-8 gap-y-8 lg:gap-y-20 xl:px-52 pt-2 mx-auto lg:mb-40 lg:mx-0 mb-8 md:grid-cols-2 w-100"
     >
+      <div v-if="!filteredList().length">
+        <h2 class="py-5">
+          Noch keine Projekte vorhanden.
+          <span class="text-xl"> 😕</span>
+        </h2>
+      </div>
       <PostPreview
         v-for="post in filteredList()"
         :id="post.id"
