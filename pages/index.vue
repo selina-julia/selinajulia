@@ -51,6 +51,7 @@
 </template>
 
 <script lang="ts">
+import sortBy from 'lodash/sortBy'
 import PostPreview from '../components/Blog/PostPreview.vue'
 
 export default {
@@ -85,6 +86,7 @@ export default {
                 ingredients: any
                 bgColor: any
                 detailImage: any
+                creationDate: any
               }
             }) => {
               return {
@@ -100,6 +102,7 @@ export default {
                 bgColor: post.content.bgColor,
                 detailImage: post.content.detailImage,
                 publishDate: post.published_at,
+                creationDate: post.content.creationDate,
               }
             }
           ),
@@ -144,9 +147,17 @@ export default {
       //   )
       // })
       // return sortedProjects.slice(0, 4)
-      return this.posts.filter((post: { title: string }) =>
-        post.title.toLowerCase().includes(this.search.toLowerCase())
+
+      console.log(this.posts)
+
+      return sortBy(
+        this.posts.filter((post: { title: string }) =>
+          post.title.toLowerCase().includes(this.search.toLowerCase())
+        ),
+        ['creationDate']
       )
+        .reverse()
+        .slice(0, 4)
     },
     isCatSelected(cat): boolean {
       return cat === this.selectedCat
