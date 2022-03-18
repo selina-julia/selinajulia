@@ -7,7 +7,7 @@ export default {
     ssr: true,
     buildDir: "dist",
     googleAnalytics: {
-        id: "G-T8L234W547"
+        id: "UA-162813089-1"
     },
     sitemap: {
         hostname: "https://selinajulia.com"
