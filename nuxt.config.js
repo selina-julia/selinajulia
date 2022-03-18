@@ -9,6 +9,9 @@ export default {
     googleAnalytics: {
         id: "UA-162813089-1"
     },
+    sitemap: {
+        hostname: "https://selinajulia.com"
+    },
 
     theme: {
         extend: {
