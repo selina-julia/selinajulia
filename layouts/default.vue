@@ -1,79 +1,82 @@
 <template>
-  <div class="overflow-x-hidden">
-    <TheHeader />
+    <div class="overflow-x-hidden">
+        <TheHeader />
 
-    <main class="w-screen main-content px-5 md:px-16">
-      <nuxt />
-    </main>
-    <TheFooter />
-  </div>
+        <main class="w-screen main-content px-5 md:px-16">
+            <nuxt />
+        </main>
+        <TheFooter />
+    </div>
 </template>
 
 <script>
-import TheHeader from '@/components/TheHeader/TheHeader.vue'
-import TheFooter from '@/components/TheFooter/TheFooter.vue'
+import TheHeader from "@/components/TheHeader/TheHeader.vue";
+import TheFooter from "@/components/TheFooter/TheFooter.vue";
 
 export default {
-  name: 'LayoutPage',
+    name: "LayoutPage",
 
-  components: {
-    TheHeader,
-    TheFooter,
-  },
-}
+    components: {
+        TheHeader,
+        TheFooter
+    }
+};
 </script>
 
 <style>
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: Inter, sans-serif;
-  overflow-x: hidden;
-  font-size: 17px;
-  color: #212529;
+    font-family: Inter, sans-serif;
+    overflow-x: hidden;
+    font-size: 17px;
+    color: #212529;
 }
 
 .headline {
-  font-family: Poppins, sans-serif;
-  font-weight: 600;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
 }
 
 .sub-headline {
-  font-size: 14px;
+    font-size: 16px;
+    letter-spacing: 3px;
+    @apply uppercase;
 }
 
 .subtitle {
-  text-transform: uppercase;
-  font-size: 13px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    @apply mb-2 uppercase;
 }
 
 .text-violet {
-  color: #4236ff;
+    color: #4236ff;
 }
 
 .bg-violet {
-  background: #4236ff;
+    background: #4236ff;
 }
 
 .button {
-  background: #4236ff;
-  color: #fff;
-  border-radius: 5px;
-  padding: 12px 25px;
-  transition: 300ms ease-in-out;
+    background: #4236ff;
+    color: #fff;
+    border-radius: 5px;
+    padding: 12px 25px;
+    transition: 300ms ease-in-out;
 }
 
 .button:hover {
-  transform: scale(0.9);
-  opacity: 0.7;
+    transform: scale(0.9);
+    opacity: 0.7;
 }
 
 .main-content {
-  margin-top: 1.5rem;
-  @media (min-width: 768px) {
-    margin-top: 5.5rem;
-  }
+    margin-top: 1.5rem;
+    @media (min-width: 768px) {
+        margin-top: 5.5rem;
+    }
 }
 </style>
