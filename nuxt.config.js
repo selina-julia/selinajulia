@@ -88,7 +88,7 @@ export default {
                 accessToken:
                     process.env.NODE_ENV === "production"
                         ? "P0fRQZ2ZO5pVkdaMLRxCzAtt"
-                        : "P0fRQZ2ZO5pVkdaMLRxCzAtt",
+                        : "ghUgpDuuhHYTeKz8sNDd7gtt",
                 cacheProvider: "memory"
             }
         ]
