@@ -1,103 +1,165 @@
 <template>
-    <div id="post" class="xl:px-52 mb-32">
+    <div class="flex">
+        <aside class="w-2/12 pt-6 mr-5">
+            <div class="relative mb-5 mr-7 search-container">
+                <input
+                    id="search-bar"
+                    v-model="search"
+                    type="text"
+                    class="px-3 py-2 mb-5"
+                    placeholder="Search title.."
+                    @change="filteredList()"
+                />
+
+                <a href="#"
+                    ><img
+                        class="search-icon"
+                        src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"
+                /></a>
+            </div>
+
+            <div
+                v-for="cat in categories"
+                :key="cat"
+                class="mb-3"
+                @click="filter(cat)"
+            >
+                <input :id="cat" type="radio" name="cats" />
+                <label :for="cat">{{ cat }}</label>
+            </div>
+        </aside>
         <section
-            class="container lg:px-4 pt-16 lg:pt-8 pb-20 mx-auto post-content"
+            id="posts"
+            class="container grid gap-8 px-4 mx-auto mb-8 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 w-100"
         >
-            <div class="flex items-center mb-4">
-                <object data="../../static/icons/back.svg" type="image/svg+xml">
-                    <img
-                        class="w-5 h-5 mr-2 transition duration-200 ease-in-out"
-                        src="../../static/icons/back.svg"
-                    />
-                </object>
-                <nuxt-link to="/projects">Zurück</nuxt-link>
-            </div>
-
-            <h1 class="headline mb-2 text-3xl font-bold xl:w-7/12 lg:text-7xl">
-                {{ title }}
-            </h1>
-
-            <div class="subtitle">
-                [ {{ $dateFns.format(new Date(creationDate), "MMMM yyyy") }} ]
-            </div>
-
-            <div class="flex items-center mt-6 gap-x-7">
-                <div class="flex gap-x-3">
-                    <div
-                        v-for="cat in categories"
-                        :key="cat"
-                        class="px-2 py-1 rounded-sm border"
-                    >
-                        {{ cat }}
-                    </div>
-                </div>
-
-                <a v-if="link" :href="link" target="_blank">
-                    <object
-                        data="../../static/icons/link.svg"
-                        type="image/svg+xml"
-                    >
-                        <img
-                            class="w-5 h-5 mr-2 transition duration-200 ease-in-out"
-                            src="../../static/icons/link.svg"
-                        />
-                    </object>
-                </a>
-            </div>
-
-            <p class="mt-5 lg:w-4/6">{{ content }}</p>
+            <PostPreview
+                v-for="post in filteredList()"
+                :id="post.id"
+                :key="post.id"
+                :title="post.title"
+                :excerpt="post.previewText"
+                :thumbnailImage="post.thumbnailUrl"
+                :detailImage="post.detailImage"
+                :categories="post.categories"
+                :selectedCategory="selectedCat"
+                :difficulty="post.difficulty"
+                :minutes="post.minutes"
+            />
         </section>
-
-        <img
-            v-if="detailImage"
-            class="w-full transition duration-200 ease-in-out"
-            :src="detailImage.filename"
-        />
     </div>
 </template>
 
-<script>
-import { deAT } from "date-fns/locale";
+<script lang="ts">
+import PostPreview from "../../components/Blog/PostPreview.vue";
 
 export default {
     name: "ProjectItem",
-    props: {
-        lang: deAT
+    components: {
+        PostPreview
     },
+
+    // eslint-disable-next-line camelcase
+    // asyncData(context: {
+    //   app: {
+    //     $storyapi: {
+    //       get: (
+    //         arg0: string,
+    //         // eslint-disable-next-line camelcase
+    //         arg1: { version: string; starts_with: string }
+    //       ) => Promise<any>
+    //     }
+    //   }
+    // }) {
+    //   // fetch data from blog folder in storyblok
+    //   return context.app.$storyapi
+    //     .get('cdn/stories', {
+    //       version: context.isDev ? "draft" : "published",
+    //       starts_with: 'blog/',
+    //     })
+    //     .then((res: { data: { stories: any[] } }) => {
+    //       return {
+    //         posts: res.data.stories.map(
+    //           (post: {
+    //             slug: any
+    //             content: {
+    //               title: any
+    //               description: any
+    //               thumbnail: { filename: any }
+    //               categories: any
+    //               difficulty: any
+    //               minutes: any
+    //             }
+    //           }) => {
+    //             return {
+    //               id: post.slug,
+    //               title: post.content.title,
+    //               previewText: post.content.description,
+    //               thumbnailUrl: post.content.thumbnail.filename,
+    //               categories: post.content.categories,
+    //               difficulty: post.content.difficulty,
+    //               minutes: post.content.minutes,
+    //             }
+    //           }
+    //         ),
+    //       }
+    //     })
+    // },
     asyncData(context) {
         return context.app.$storyapi
-            .get("cdn/stories/blog/" + context.params.postId, {
-                version: context.isDev ? "draft" : "published"
+            .get("cdn/stories", {
+                version: context.isDev ? "draft" : "published",
+                starts_with: "blog/"
             })
             .then((res) => {
                 return {
-                    id: res.data.story.content.id,
-                    image: res.data.story.content.thumbnail,
-                    title: res.data.story.content.title,
-                    content: res.data.story.content.content,
-                    categories: res.data.story.content.categories,
-                    ingredients: res.data.story.content.ingredients,
-                    detailImage: res.data.story.content.detailImage,
-                    link: res.data.story.content.link,
-                    creationDate: res.data.story.content.creationDate
+                    posts: res.data.stories.map((post) => {
+                        return {
+                            id: post.slug,
+                            title: post.content.title,
+                            previewText: post.content.description,
+                            thumbnailUrl: post.content.thumbnail.filename,
+                            categories: post.content.categories,
+                            difficulty: post.content.difficulty,
+                            minutes: post.content.minutes
+                        };
+                    })
                 };
             });
+    },
+    data() {
+        return {
+            isVisible: false,
+            selectedCat: "",
+            search: "",
+            categories: [
+                "Alle",
+                "Brot",
+                "Chinesisch",
+                "Hühnerfleisch",
+                "Italienisch",
+                "Kartoffeln",
+                "Meeresfrüchte",
+                "Österreichisch",
+                "Rindfleisch",
+                "Salat",
+                "Schweinefleisch",
+                "Süßes",
+                "Vegetarisch"
+            ]
+        };
+    },
+
+    methods: {
+        filter(selectedCat: any): void {
+            this.selectedCat = selectedCat;
+        },
+        filteredList(): any {
+            return this.posts.filter((post: { title: string }) => {
+                return post.title
+                    .toLowerCase()
+                    .includes(this.search.toLowerCase());
+            });
+        }
     }
 };
 </script>
-
-<style>
-.post-thumbnail {
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-}
-
-.post-content p {
-    white-space: pre-line;
-}
-
-.detail-category {
-    border: 1px solid #555;
-}
-</style>

@@ -53,22 +53,6 @@ import { sortBy } from 'lodash'; import { sortBy } from 'lodash';
                     @click="filter(cat)"
                 >
                     {{ cat }}
-                    <!-- <div class="lg:flex">
-            <input :id="cat" class="hidden" type="radio" name="cats" />
-            <div
-              class="hidden lg:block lg:h-full lg:mr-2 lg:rounded-sm filter-checkbox"
-            >
-              <img
-                class="w-5 h-5 p-0.5"
-                :class="{
-                  'opacity-100': isCatSelected(cat),
-                  'opacity-0': !isCatSelected(cat),
-                }"
-                src="../../static/icons/tick.svg"
-              />
-            </div>
-            <label :for="cat">{{ cat }}</label>
-          </div> -->
                 </div>
             </div>
         </aside>
@@ -97,15 +81,15 @@ import { sortBy } from 'lodash'; import { sortBy } from 'lodash';
                 :ingredients="post.ingredients"
                 :bgColor="post.bgColor"
                 :detailImage="post.detailImage"
-                :createdDate="post.creationDate"
+                :creationDate="post.creationDate"
             />
         </section>
     </div>
 </template>
 
 <script lang="ts">
-import PostPreview from "../../components/Blog/PostPreview.vue";
 import sortBy from "lodash/sortBy";
+import PostPreview from "../../components/Blog/PostPreview.vue";
 
 export default {
     name: "HomePage",

@@ -21,7 +21,10 @@
             </h1>
 
             <div class="subtitle">
-                [ {{ $dateFns.format(new Date(creationDate), "MMMM yyyy") }} ]
+                <!-- [ {{ format(new Date(creationDate), "yyyy") }} ]
+                 -->
+                <!-- {{ getCreationDateFormatted(new Date(creationDate)) }} -->
+                [ {{ creationDate }} ]
             </div>
 
             <div class="flex items-center mt-6 gap-x-7">
@@ -48,25 +51,27 @@
                 </a>
             </div>
 
-            <p class="mt-5 lg:w-4/6">{{ content }}</p>
+            <p class="mt-5 mb-16 lg:w-4/6">{{ content }}</p>
+
+            <img
+                v-if="detailImage"
+                class="w-full transition duration-200 ease-in-out"
+                :src="detailImage.filename"
+            />
         </section>
 
-        <img
-            v-if="detailImage"
-            class="w-full transition duration-200 ease-in-out"
-            :src="detailImage.filename"
-        />
+        <!-- <section
+            id="posts"
+            class="container grid gap-8 px-4 mx-auto mb-8 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 w-100"
+        ></section> -->
     </div>
 </template>
 
 <script>
-import { deAT } from "date-fns/locale";
+import { format } from "date-fns";
 
 export default {
     name: "ProjectItem",
-    props: {
-        lang: deAT
-    },
     asyncData(context) {
         return context.app.$storyapi
             .get("cdn/stories/blog/" + context.params.postId, {
@@ -85,6 +90,16 @@ export default {
                     creationDate: res.data.story.content.creationDate
                 };
             });
+    },
+    methods: {
+        getCreationDateFormatted(date) {
+            if (!date) {
+                return;
+            }
+            return format(date, "MMMM yyyy");
+        },
+
+        filteredList() {}
     }
 };
 </script>
