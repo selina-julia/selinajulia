@@ -16,11 +16,15 @@
                 <nuxt-link to="/projects">Zurück</nuxt-link>
             </div>
 
-            <h1 class="headline mb-5 text-3xl font-bold xl:w-7/12 lg:text-7xl">
+            <h1 class="headline mb-1 text-3xl font-bold xl:w-7/12 lg:text-7xl">
                 {{ title }}
             </h1>
 
-            <div class="flex items-center gap-x-7">
+            <div class="subtitle">
+                [ {{ $dateFns.format(new Date(creationDate), "MMMM yyyy") }} ]
+            </div>
+
+            <div class="flex items-center mt-6 gap-x-7">
                 <div class="flex gap-x-3">
                     <div
                         v-for="cat in categories"
@@ -29,10 +33,6 @@
                     >
                         {{ cat }}
                     </div>
-                </div>
-
-                <div>
-                    {{ $dateFns.format(new Date(creationDate), "MMMM yyyy") }}
                 </div>
 
                 <a v-if="link" :href="link" target="_blank">
