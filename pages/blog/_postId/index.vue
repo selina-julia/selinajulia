@@ -16,7 +16,7 @@
                 <nuxt-link to="/projects">Zurück</nuxt-link>
             </div>
 
-            <h1 class="headline mb-1 text-3xl font-bold xl:w-7/12 lg:text-7xl">
+            <h1 class="headline mb-2 text-3xl font-bold xl:w-7/12 lg:text-7xl">
                 {{ title }}
             </h1>
 
