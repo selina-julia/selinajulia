@@ -18,6 +18,7 @@
                 alt=""
             />
         </div>
+
         <div class="text-center mb-10">
             <p class="subtitle text-violet">[ Mein Spezialgebiet ]</p>
             <div class="headline text-3xl">Skills & Tools</div>
